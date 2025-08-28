@@ -23,20 +23,22 @@ body {
 header {
   background: #223f66;
   color: #fff;
-  padding: 15px 0;
+  padding: 0 15px; /* apenas horizontal */
+  height: 80px;    /* define altura fixa */
+  display: flex;
+  align-items: center; /* centraliza verticalmente */
 }
 
 .header-flex {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
+  width: 100%;
 }
 
 header h1 {
   font-size: 1.2rem;
   font-weight: 700;
-  margin-bottom: 10px;
+  margin: 0; /* remove margin inferior */
 }
 
 nav ul {
