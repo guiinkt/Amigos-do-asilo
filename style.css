@@ -154,6 +154,29 @@ section {
   box-shadow: 0 6px 15px rgba(0,0,0,0.2);
 }
 
+.contact-box {
+  background-color: #e3eafc;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 20px 0;       /* espaçamento só em cima/baixo */
+  max-width: 400px;     /* largura limitada */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.contact-box:hover {
+  background-color: #c9d6fc;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.contact-box p {
+  margin: 5px 0;
+  font-size: 0.95rem;
+  color: #333;
+  text-align: left; /* mantém alinhado à esquerda */
+}
+
 /* FORMULÁRIO */
 form input,
 form textarea {
@@ -162,6 +185,9 @@ form textarea {
   margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  font-family: 'Roboto', sans-serif;
+  font-size: clamp(0.85rem, 2vw, 0.95rem); /* responsivo: mínimo 0.85rem, máximo 0.95rem */
+  color: #333;
 }
 
 form button {
