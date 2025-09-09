@@ -29,6 +29,10 @@ header {
   align-items: center; /* centraliza verticalmente */
 }
 
+header nav {
+  margin-top: 5px;
+}
+
 .header-flex {
   display: flex;
   justify-content: space-between;
