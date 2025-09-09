@@ -5,16 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Amigos do Asilo</title>
 
-  <!-- FONTE -->
+  <!-- Fonte -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
-  <!-- LINK CSS  -->
+  <!-- Link CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <!-- HEADER -->
-  <header class="fade-in">
+  <!-- Header -->
+  <header>
     <div class="container header-flex">
       <h1>Amigos do Asilo</h1>
       <nav>
@@ -27,103 +26,79 @@
     </div>
   </header>
 
-  <!-- HERO -->
-  <section class="hero fade-in">
+  <!-- Hero -->
+  <section class="hero">
     <div class="container">
-      <h2>Faça parte dessa corrente do bem 🤍</h2>
+      <h2>Faça parte dessa corrente do bem ❤️</h2>
       <p>Ajude com doações ou seja um voluntário no nosso asilo local. Cada gesto faz a diferença.</p>
       <a href="#contato" class="btn">Quero Ajudar</a>
     </div>
   </section>
 
-  <!-- SOBRE -->
-  <section id="sobre" class="info container fade-in">
+  <!-- Sobre -->
+  <section id="sobre" class="info container">
     <h3>Quem somos</h3>
-    <p>O projeto <strong>Amigos do Asilo</strong> nasceu para conectar a comunidade ao nosso asilo local. Nosso objetivo é trazer dignidade e alegria aos idosos, promovendo cuidados, atividades e suporte essencial.</p>
+    <p>O projeto <strong>Amigos do Asilo</strong> nasceu para conectar a comunidade ao nosso asilo local. Nosso objetivo é trazer dignidade, companhia e cuidado aos idosos.</p>
     <ul>
-      <li>Atividades de lazer e cultura</li>
-      <li>Campanhas de arrecadação de alimentos e roupas</li>
-      <li>Voluntariado e integração comunitária</li>
+      <li>💛 Aceitamos doações em alimentos, roupas e produtos de higiene</li>
+      <li>🤝 Você também pode se voluntariar para visitas</li>
+      <li>📢 Transparência total em como usamos as contribuições</li>
     </ul>
   </section>
 
-  <!-- DOAÇÕES -->
-  <section id="doacoes" class="doacoes container fade-in">
-    <h3>Como Ajudar</h3>
-    <p>Confira algumas formas de contribuir com nosso asilo:</p>
+  <!-- Contato -->
+  <section id="contato" class="contact container">
+    <h3>Entre em contato</h3>
+    <p>Preencha o formulário abaixo e retornaremos em breve:</p>
 
-    <div class="cards">
-      <div class="card fade-in">
-        <h4>Doações de Alimentos</h4>
-        <p>Arroz, feijão, leite e outros itens não perecíveis para o dia a dia dos idosos.</p>
-      </div>
-
-      <div class="card fade-in">
-        <h4>Doações de Roupas</h4>
-        <p>Roupas em bom estado para adultos e idosos, especialmente roupas de frio.</p>
-      </div>
-
-      <div class="card fade-in">
-        <h4>Voluntariado</h4>
-        <p>Participe de atividades, eventos e momentos de lazer com os idosos.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTATO -->
-  <section id="contato" class="contact container fade-in">
-    <h3>Contato</h3>
-    <p>Entre em contato conosco para mais informações ou para se tornar um voluntário.</p>
-
-    <form id="contact-form">
-      <input type="text" name="nome" placeholder="Seu nome" required>
-      <input type="email" name="email" placeholder="Seu email" required>
-      <textarea name="mensagem" rows="5" placeholder="Sua mensagem" required></textarea>
-      <button type="submit">Enviar</button>
+    <form id="contactForm">
+      <input type="text" id="nome" placeholder="Seu nome" required>
+      <input type="email" id="email" placeholder="Seu e-mail" required>
+      <textarea id="mensagem" placeholder="Digite sua mensagem" required></textarea>
+      <button type="submit" class="btn">Enviar</button>
     </form>
+
+    <!-- Feedback -->
+    <p id="formMessage" style="margin-top: 10px; font-weight: bold;"></p>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="fade-in">
-    <p>&copy; 2025 Amigos do Asilo. Todos os direitos reservados.</p>
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Amigos do Asilo - Todos os direitos reservados.</p>
   </footer>
 
-  <!-- SCRIPT JS -->
+  <!-- Script -->
   <script>
-    const form = document.getElementById('contact-form');
+    const form = document.getElementById("contactForm");
+    const formMessage = document.getElementById("formMessage");
 
-    form.addEventListener('submit', function(event){
-      event.preventDefault(); // evita reload da página
+    form.addEventListener("submit", function(event) {
+      event.preventDefault(); // Evita recarregar a página
 
-      const nome = form.nome.value;
-      const email = form.email.value;
-      const mensagem = form.mensagem.value;
+      const nome = document.getElementById("nome").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const mensagem = document.getElementById("mensagem").value.trim();
 
-      // Simula envio
-      alert(`Mensagem enviada!\n\nNome: ${nome}\nEmail: ${email}\nMensagem: ${mensagem}`);
+      if (!nome || !email || !mensagem) {
+        formMessage.style.color = "red";
+        formMessage.textContent = "Por favor, preencha todos os campos.";
+        return;
+      }
 
-      // Limpa o formulário
+      // Validacao email
+      const emailRegex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+      if (!emailRegex.test(email)) {
+        formMessage.style.color = "red";
+        formMessage.textContent = "Digite um e-mail válido.";
+        return;
+      }
+
+      // Caso OK
+      formMessage.style.color = "green";
+      formMessage.textContent = "Mensagem enviada com sucesso!";
+
       form.reset();
     });
-
-    // SCRIPT FADE-IN
-    const faders = document.querySelectorAll('.fade-in');
-
-    const appearOptions = { threshold: 0.1 };
-
-    const appearOnScroll = new IntersectionObserver(function(entries, observer){
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          entry.target.classList.add('show');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, appearOptions);
-
-    faders.forEach(fader => {
-      appearOnScroll.observe(fader);
-    });
-  </script>
-
+</script>
 </body>
 </html>
